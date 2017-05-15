@@ -1,0 +1,82 @@
+/ * Muestra espejo mágico Config
+ *
+ * Por Michael Teeuw http://michaelteeuw.nl
+ * MIT licencia.
+ * /
+
+var config = {
+	Puerto: 8080,
+	ipWhitelist: [ "127.0.0.1", ":: ffff: 127.0.0.1", ":: 1"], // Ajuste [] para permitir que todas las direcciones IP.
+
+	idioma: "es",
+	timeFormat: 24,
+	unidades: "métrica",
+
+	módulos: [
+		{
+			Módulo: "alertar",
+		},
+		{
+			Módulo: "updatenotification",
+			posición: "top_bar"
+		},
+		{
+			Módulo: "reloj",
+			posición: "TOP_LEFT"
+		},
+		{
+			Módulo: "calendario",
+			encabezado: "Vacaciones de Estados Unidos",
+			posición: "TOP_LEFT",
+			config: {
+				calendarios: [
+					{
+						símbolo: "calendario-check-O",
+						url: "webcal: //www.calendarlabs.com/templates/ical/US-Holidays.ics"
+					}
+				]
+			}
+		},
+		{
+			Módulo: "cumplidos",
+			posición: "lower_third"
+		},
+		{
+			Módulo: "Tiemporeal",
+			posición: "TOP_RIGHT",
+			config: {
+				ubicación: "Ciudad de México",
+				LocationID: "3530597", // ID de http://www.openweathermap.org/help/city_list.txt
+				appid: "YOUR_OPENWEATHER_API_KEY"
+			}
+		},
+		{
+			Módulo: "weatherforecast",
+			posición: "TOP_RIGHT",
+			header: "Pronóstico del tiempo",
+			config: {
+				ubicación: "Ciudad de México",
+				LocationID: "3530597", // ID de http://www.openweathermap.org/help/city_list.txt
+				appid: "YOUR_OPENWEATHER_API_KEY"
+			}
+		},
+		{
+			Módulo: "suministro de noticias",
+			posición: "bottom_bar",
+			config: {
+				RSS: [
+					{
+						Título: "New York Times",
+						url: "http://www.nytimes.com/services/xml/rss/nyt/HomePage.xml"
+					}
+				],
+				showSourceTitle: true,
+				showPublishDate: true
+			}
+		},
+	]
+
+};
+
+/ *************** NO EDITE la línea de abajo *************** /
+si (typeof módulo == "indefinido"!) {module.exports = config;}
